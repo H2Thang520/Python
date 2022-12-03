@@ -70,6 +70,67 @@ class Bai3:
             del dic[k]
         print(dic)
 
+class Bai4:
+    listEmployees = [{
+            "Ma NV" : 1,
+            "Ten NV" : "Nguyễn Văn A",
+        }, {
+            "Ma NV" : 2,
+            "Ten NV" : "Lê Văn B",
+        }, {
+            "Ma NV" : 3,
+            "Ten NV" : "Hồ Hữu C",
+        }]
+    n = len(listEmployees)
+    def GetAllEmployees(self):
+        for i in range(0,self.n):
+            print("Ma NV: " + format(self.listEmployees[i]["Ma NV"]))
+            print("Ten NV: " + self.listEmployees[i]["Ten NV"])
+    def FindEmployees(self, name):
+        for i in range(0,self.n):
+            if self.listEmployees[i]["Ten NV"].find(name) != -1:
+                print("Ma NV: " + format(self.listEmployees[i]["Ma NV"]))
+                print("Ten NV: " + self.listEmployees[i]["Ten NV"])
+    def FindEmployees2(self, name):
+        for i in range(0,self.n):
+            if format(self.listEmployees[i]["Ma NV"]).find(name) != -1:
+                print("Ma NV: " + format(self.listEmployees[i]["Ma NV"]))
+                print("Ten NV: " + self.listEmployees[i]["Ten NV"])
+
+
+    def AddEmployees(self):
+        id = int(input("Nhap Ma NV: "))
+        for i in range(0,self.n):
+            if self.listEmployees[i]["Ma NV"] == id:
+                print("Ma NV da ton tai")
+                return -1
+        name = input("Nhap Ten NV: ")
+        newEmployees = {"Ma NV" : id, "Ten NV" : name}
+        self.listEmployees.append(newEmployees)
+        self.n = len(self.listEmployees)
+        print("Danh sach NV sau khi them la: ")
+        self.GetAllEmployees()
+    def DeleteEmployees(self):
+        id2 = int(input("Nhap MaNV xoa: "))
+        for i in range(0,self.n):
+            if self.listEmployees[i]["Ma NV"] == id2:
+                del self.listEmployees[i]
+                self.n = len(self.listEmployees)
+                print("Danh sach NV sau khi xoa: ")
+                self.GetAllEmployees()
+                return
+        print("Khong tim thay")
+    def DeleteEmployees2(self):
+        id = input("Nhap Ten NV: " )
+        for i in range(0,self.n):
+            if self.listEmployees[i]["Ten NV"].find(id) != -1:
+                del self.listEmployees[i]
+                self.n = len(self.listEmployees)
+                print("Danh sach sau khi xoa: ")
+                self.GetAllEmployees()
+                return
+            else:
+                 print("Khong tim thay NV")
 # n = int (input("Nhap N: "))
 # b1 = Bai1()
 # b1.InHinhChuNhat(n)
@@ -79,5 +140,15 @@ class Bai3:
 # b2 = Bai2()
 # b2.TimMinMax()
 
-b3 = Bai3()
-b3.Dictionnary()
+# b3 = Bai3()
+# b3.Dictionnary()
+
+b4 = Bai4()
+# b4.GetAllEmployees()
+# b4.FindEmployees("Nguyễn Văn A")
+# b4.FindEmployees2("2")
+b4.AddEmployees()
+b4.DeleteEmployees()
+# b4.DeleteEmployees2()
+
+
